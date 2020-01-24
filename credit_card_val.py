@@ -1,18 +1,17 @@
-def cardLuhnChecksumIsValid(card_number):
-    """ checks to make sure that the card passes a luhn mod-10 checksum """
-
+#function for ccredit card validation 
+#algorithem used luhn algorithem
+def credit_card_vali(card_number):
+    #check_number = int(card_number)%10
     sum = 0
-    num_digits = len(card_number)
-    oddeven = num_digits & 1
+    if  not(len(card_number)):
+        return False
+    else :
+        for digit in range(0,len(card_number)-1):
+            sum += int(card_number[digit])
+        if int(card_number[-1]) +(sum%10== 0):
+            return True
+        else:
+            return False
 
-    for count in range(0, num_digits):
-        digit = int(card_number[count])
-
-        if not (( count & 1 ) ^ oddeven ):
-            digit = digit * 2
-        if digit > 9:
-            digit = digit - 9
-
-        sum = sum + digit
-
-    return ( (sum % 10) == 0 )
+        
+        
